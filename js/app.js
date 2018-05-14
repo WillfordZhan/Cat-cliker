@@ -15,14 +15,14 @@ $(function(){
             }
             this.catNum++;
         },
-        getCatNum = function () {
+        getCatNum: function () {
             return this.catsNum;
         },
-        addAndReturnClickTimes = function (catIndex) {
+        addAndReturnClickTimes: function (catIndex) {
             this.cats[index].ClickTimes++;
             return this.cats[index].ClickTimes;
         },
-        getCat = function (catIndex) {
+        getCat: function (catIndex) {
             return this.cats[catIndex];
         },
     };
@@ -39,16 +39,16 @@ $(function(){
             catListView.init(model.getCatNum());
             catView.render(this.getCat(0));
         },
-        addCat = function () {
+        addCat: function () {
             model.addCat();
         },
-        getCat = function (catIndex) {
+        getCat: function (catIndex) {
             return model.getCat(catIndex);
         },
-        changeCurrentCat = function(catIndex){
+        changeCurrentCat: function(catIndex){
             catView.render(this.getCat(catIndex));
         },
-        addAndReturnClickTimes = function (catIndex) {
+        addAndReturnClickTimes: function (catIndex) {
             this.getCat(catIndex);
             return model.addAndReturnClickTimes(catIndex);
         },
@@ -63,7 +63,7 @@ $(function(){
             var catImgNode = $(".cat-img");
             var catTimesNode = $(".cat-times");
         },
-        renderClickTimes = function (ClickTimes) {
+        renderClickTimes: function (ClickTimes) {
             catTimesNode.innerText = "<span>"+catClickTimes+"</span>";
         },
         render: function(cat){
