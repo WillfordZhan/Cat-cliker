@@ -2,40 +2,99 @@ $(function(){
 
     var model = {
         init: function() {
-            
+            if (!cats) {
+                cats = {};
+            }
         },
-        
+        catNum,
+        addCat: function () {
+            var newCat = {
+                name: "cat"+this.catNum,
+                imgURL:"/img/cat"+this.catNum+".jpg",
+                ClickTimes: 0
+            }
+            this.catNum++;
+        },
+        getCatNum = function () {
+            return this.catsNum;
+        },
+        addAndReturnClickTimes = function (catIndex) {
+            this.cats[index].ClickTimes++;
+            return this.cats[index].ClickTimes;
+        },
+        getCat = function (catIndex) {
+            return this.cats[catIndex];
+        },
     };
 
 
     var octopus = {
-        
-        
         init: function() {
             model.init();
-            catView.init();
-            catListView.init();
-        }
+            this.addCat();
+            this.addCat();
+            this.addCat();
+            this.addCat();
+            this.addCat();
+            catListView.init(model.getCatNum());
+            catView.render(this.getCat(0));
+        },
+        addCat = function () {
+            model.addCat();
+        },
+        getCat = function (catIndex) {
+            return model.getCat(catIndex);
+        },
+        changeCurrentCat = function(catIndex){
+            catView.render(this.getCat(catIndex));
+        },
+        addAndReturnClickTimes = function (catIndex) {
+            this.getCat(catIndex);
+            return model.addAndReturnClickTimes(catIndex);
+        },
+
+        
     };
 
 
     var catView = {
         init: function() {
-            
-            catView.render();
+            var catNameNode = $(".cat-name");
+            var catImgNode = $(".cat-img");
+            var catTimesNode = $(".cat-times");
         },
-        render: function(){
-            
-        }
+        renderClickTimes = function (ClickTimes) {
+            catTimesNode.innerText = "<span>"+catClickTimes+"</span>";
+        },
+        render: function(cat){
+            var catName = anotherCat.name;
+            var catImgURL = anotherCat.imgURL;
+            var catClickTimes = anotherCat.ClickTimes;
+
+            catNameNode.innerHTML = "<span>"+catName+"</span>";
+            catImgNode.innerHTML = "<img src='"+catImgURL+"'>";
+            this.renderClickTimes(catClickTimes);
+            catImgNode.addEventListener('click',(function(){
+                var newClickTime = octopus.addAndReturnClickTimes(catIndex);
+                this.renderClickTimes(newClickTime);
+            })());
+        },
+        
     };
 
     var catListView = {
-        init: function() {
-
-            catListView.render();
+        init: function(catNum) {
+            var catListNode = $(".cat-list");
+            catListView.render(catNum);
         },
-        render: function() {
-
+        render: function(catNum) {
+            for (let i = 0; i < catNum; i++) {
+                var catButton = document.createElement('button');
+                catButton.innerText = "cat"+i;
+                catButton.click((function (iCopy){
+                    octopus.changeCurrentCat(iCopy);
+                })(i));
+            }
         }
     };
 
