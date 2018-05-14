@@ -1,10 +1,20 @@
-var clickImg = document.getElementsByClassName("clicker")[0];
-var timeShower = document.getElementsByClassName("timeShower")[0];
-var clickTimes = 0;
+var clickImg1 = document.getElementsByClassName("clicker1")[0];
+var clickImg2 = document.getElementsByClassName("clicker2")[0];
+var timeShower1 = document.getElementsByClassName("timeShower1")[0];
+var timeShower2 = document.getElementsByClassName("timeShower2")[0];
+var clickTimes1 = 0;
+var clickTimes2 = 0;
 
-timeShower.innerText = clickTimes;
 
-clickImg.addEventListener('click', function () {
-    clickTimes++;
-    timeShower.innerText = clickTimes;
+timeShower1.innerText = clickTimes1;
+timeShower2.innerText = clickTimes2;
+
+clickImg1.addEventListener('click', function () {
+    clickTimes1++;
+    timeShower1.innerText = clickTimes1;
+});
+
+clickImg2.addEventListener('click', function () {
+    clickTimes2++;
+    timeShower2.innerText = clickTimes2;
 });
