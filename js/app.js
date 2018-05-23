@@ -1,5 +1,4 @@
 $(function(){
-
     var model = {
         init: function() {
             if (!cats) {
